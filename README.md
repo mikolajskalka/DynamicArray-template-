@@ -2,7 +2,7 @@
 
 This is my implementation of dynamic array template in C++.
 
-It is supposed to work exactly as \<vector\> template.
+It is supposed to work exactly as \<vector\> template, but was made on my C++ classes, so please don't be too certain about it.
 
 It is not finished. Still have to add const iterators, and few more fetures.
 

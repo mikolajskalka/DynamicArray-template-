@@ -33,7 +33,7 @@ public:
 
 
        public:
-       const_iterator(const T*);
+       explicit const_iterator(const T*);
 
        bool operator==(const const_iterator&);
        bool operator!=(const const_iterator&);
@@ -183,22 +183,18 @@ typename DynamicArray<T>::iterator DynamicArray<T>::end(){
 }
 
 
-//Przeładowany operator wyjścia
-
 template <typename T>
-std::ostream& operator<<(std::ostream& output, const DynamicArray<T>& source){
-    for(std::size_t i = 0; i < source.size_; ++i){
-        if(i != (source.size_ - 1)){
-            std::cout << source.t_[i] << ", ";
-        }
-        else {
-            std::cout << source.t_[i];
-        }
-    }
-    return output;
+typename DynamicArray<T>::iterator DynamicArray<T>::begin(){
+    return iterator(t_);
+}
+template <typename T>
+typename DynamicArray<T>::iterator DynamicArray<T>::end(){
+    return iterator(t_ + size_);
 }
 
+
 /* CONST ITERATOR */
+
 
 template <typename T>
 DynamicArray<T>::const_iterator::const_iterator(const T *da): it(da){}
@@ -235,7 +231,7 @@ template <typename T>
 const T* DynamicArray<T>::const_iterator::operator->(){
     return it;
 }
- 
+// 
 template <typename T>
 typename DynamicArray<T>::const_iterator DynamicArray<T>::begin() const{
     return const_iterator(t_);
@@ -244,6 +240,23 @@ template <typename T>
 typename DynamicArray<T>::const_iterator DynamicArray<T>::end() const{
     return const_iterator(t_ + size_);
 }
+
+
+//Przeładowany operator wyjścia
+
+template <typename T>
+std::ostream& operator<<(std::ostream& output, const DynamicArray<T>& source){
+    for(std::size_t i = 0; i < source.size_; ++i){
+        if(i != (source.size_ - 1)){
+            std::cout << source.t_[i] << ", ";
+        }
+        else {
+            std::cout << source.t_[i];
+        }
+    }
+    return output;
+}
+
 
 /* Funkcje składowe */
 

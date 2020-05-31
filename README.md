@@ -4,11 +4,11 @@ This is my implementation of dynamic array template in C++.
 
 It is supposed to work exactly as \<vector\> template, but was made on my C++ classes, so please don't be too certain about it.
 
-It is not finished. Still have to add const iterators, and few more fetures.
+It is not finished. Still have to add few more fetures.
 
 ## Use and features
 
-Template contains two private fields, defining size of an array, and a pointer to dynamicly allocated array of objects.
+Template contains two private fields, defining size of an array, and a pointer to dynamicly allocated array of objects. It has iterator, as well as const iterator.
 
 ### Template has defined:
 
@@ -21,7 +21,7 @@ Template contains two private fields, defining size of an array, and a pointer t
 
 ### Methods and overloaded operators:
 
-* output operator,
+* output operator \<\<,
 * operator[],
 * getElem(),
 * setElem(),

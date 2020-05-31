@@ -267,7 +267,7 @@ T DynamicArray<T>::getElem(std::size_t i) const{
 
 template <typename T>
 std::size_t DynamicArray<T>::size() const{
-    std::cout << size_ << std::endl;
+    // std::cout << size_ << std::endl;
     return size_;
 }
 

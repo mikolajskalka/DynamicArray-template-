@@ -1,3 +1,8 @@
 .vscode
+main
 main.cpp
 Makefile
+*.o
+.idea
+cmake-build-debug
+

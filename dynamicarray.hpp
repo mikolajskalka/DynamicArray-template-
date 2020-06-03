@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstdint>
+#include <initializer_list>
 
 template <typename T>
 class DynamicArray
@@ -44,8 +45,9 @@ public:
     };
 
 public:
-    explicit DynamicArray();                            //Constructor
+    DynamicArray();                            //Constructor
     explicit DynamicArray(std::size_t n);               //Constructor
+    DynamicArray(const std::initializer_list<T> &);
     DynamicArray(const DynamicArray&);			        //Copy assignment constructor       	
 	DynamicArray& operator=(const DynamicArray&);       //Copy assignment operator
 	DynamicArray(DynamicArray&&);				        //Move constructor
@@ -79,6 +81,14 @@ DynamicArray<T>::DynamicArray(): size_(0u), t_(nullptr) {
 template <typename T>
 DynamicArray<T>::DynamicArray(std::size_t n): size_(n), t_(new T[n]) {
     //std::cout << "Constructor" << std::endl;    
+}
+
+template<typename T>
+DynamicArray<T>::DynamicArray(const std::initializer_list<T> &l): size_(l.size()), t_(new T[size_]){
+    for(auto i = l.begin(); i < l.end(); ++i){
+        t_ = *i;
+        ++t_;
+    }
 }
 
 //Copy constructor
@@ -183,15 +193,6 @@ typename DynamicArray<T>::iterator DynamicArray<T>::end(){
 }
 
 
-template <typename T>
-typename DynamicArray<T>::iterator DynamicArray<T>::begin(){
-    return iterator(t_);
-}
-template <typename T>
-typename DynamicArray<T>::iterator DynamicArray<T>::end(){
-    return iterator(t_ + size_);
-}
-
 
 /* CONST ITERATOR */
 
@@ -231,7 +232,7 @@ template <typename T>
 const T* DynamicArray<T>::const_iterator::operator->(){
     return it;
 }
-// 
+
 template <typename T>
 typename DynamicArray<T>::const_iterator DynamicArray<T>::begin() const{
     return const_iterator(t_);
